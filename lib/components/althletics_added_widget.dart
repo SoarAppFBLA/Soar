@@ -1,5 +1,5 @@
 import '/backend/backend.dart';
-import '/components/add_club_org_widget.dart';
+import '/components/whatin_athletics_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -75,7 +75,9 @@ class _AlthleticsAddedWidgetState extends State<AlthleticsAddedWidget> {
                     builder: (context) {
                       return Padding(
                         padding: MediaQuery.viewInsetsOf(context),
-                        child: const AddClubOrgWidget(),
+                        child: WhatinAthleticsWidget(
+                          athleticsDoc: widget.athleticsDoc!,
+                        ),
                       );
                     },
                   ).then((value) => safeSetState(() {}));

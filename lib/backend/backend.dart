@@ -12,6 +12,8 @@ import 'schema/performing_arts_record.dart';
 import 'schema/academics_record.dart';
 import 'schema/community_record.dart';
 import 'schema/athletics_record.dart';
+import 'schema/awards_record.dart';
+import 'schema/showcase_awards_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -27,6 +29,8 @@ export 'schema/performing_arts_record.dart';
 export 'schema/academics_record.dart';
 export 'schema/community_record.dart';
 export 'schema/athletics_record.dart';
+export 'schema/awards_record.dart';
+export 'schema/showcase_awards_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -282,6 +286,80 @@ Future<List<AthleticsRecord>> queryAthleticsRecordOnce({
     queryCollectionOnce(
       AthleticsRecord.collection,
       AthleticsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query AwardsRecords (as a Stream and as a Future).
+Future<int> queryAwardsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      AwardsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<AwardsRecord>> queryAwardsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      AwardsRecord.collection,
+      AwardsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<AwardsRecord>> queryAwardsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      AwardsRecord.collection,
+      AwardsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query ShowcaseAwardsRecords (as a Stream and as a Future).
+Future<int> queryShowcaseAwardsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ShowcaseAwardsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ShowcaseAwardsRecord>> queryShowcaseAwardsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ShowcaseAwardsRecord.collection,
+      ShowcaseAwardsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ShowcaseAwardsRecord>> queryShowcaseAwardsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ShowcaseAwardsRecord.collection,
+      ShowcaseAwardsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

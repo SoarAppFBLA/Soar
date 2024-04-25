@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -72,40 +71,13 @@ class _LoginWidgetState extends State<LoginWidget>
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    await Navigator.push(
-                      context,
-                      PageTransition(
-                        type: PageTransitionType.fade,
-                        child: FlutterFlowExpandedImageView(
-                          image: Image.asset(
-                            'assets/images/SKYCHIEVE.png',
-                            fit: BoxFit.contain,
-                          ),
-                          allowRotation: false,
-                          tag: 'imageTag',
-                          useHeroAnimation: true,
-                        ),
-                      ),
-                    );
-                  },
-                  child: Hero(
-                    tag: 'imageTag',
-                    transitionOnUserGestures: true,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(24.0),
-                      child: Image.asset(
-                        'assets/images/SKYCHIEVE.png',
-                        width: 200.0,
-                        height: 200.0,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(24.0),
+                  child: Image.asset(
+                    'assets/images/SKYCHIEVE.png',
+                    width: 200.0,
+                    height: 200.0,
+                    fit: BoxFit.cover,
                   ),
                 ),
                 Container(

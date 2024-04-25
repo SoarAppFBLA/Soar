@@ -8,3 +8,4 @@ export '/performing_arts/performing_arts_widget.dart' show PerformingArtsWidget;
 export '/community_service/community_service_widget.dart'
     show CommunityServiceWidget;
 export '/athletics/athletics_widget.dart' show AthleticsWidget;
+export '/awards/awards_widget.dart' show AwardsWidget;

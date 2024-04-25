@@ -1,26 +1,26 @@
 import '/backend/backend.dart';
-import '/components/what_in_club_widget.dart';
+import '/components/whatin_athletics_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'clubs_added_model.dart';
-export 'clubs_added_model.dart';
+import 'awards_added_model.dart';
+export 'awards_added_model.dart';
 
-class ClubsAddedWidget extends StatefulWidget {
-  const ClubsAddedWidget({
+class AwardsAddedWidget extends StatefulWidget {
+  const AwardsAddedWidget({
     super.key,
-    required this.clubsDoc,
+    required this.athleticsDoc,
   });
 
-  final ClubsRecord? clubsDoc;
+  final AthleticsRecord? athleticsDoc;
 
   @override
-  State<ClubsAddedWidget> createState() => _ClubsAddedWidgetState();
+  State<AwardsAddedWidget> createState() => _AwardsAddedWidgetState();
 }
 
-class _ClubsAddedWidgetState extends State<ClubsAddedWidget> {
-  late ClubsAddedModel _model;
+class _AwardsAddedWidgetState extends State<AwardsAddedWidget> {
+  late AwardsAddedModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -31,7 +31,7 @@ class _ClubsAddedWidgetState extends State<ClubsAddedWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ClubsAddedModel());
+    _model = createModel(context, () => AwardsAddedModel());
   }
 
   @override
@@ -75,8 +75,8 @@ class _ClubsAddedWidgetState extends State<ClubsAddedWidget> {
                     builder: (context) {
                       return Padding(
                         padding: MediaQuery.viewInsetsOf(context),
-                        child: WhatInClubWidget(
-                          clubDoc: widget.clubsDoc!,
+                        child: WhatinAthleticsWidget(
+                          athleticsDoc: widget.athleticsDoc!,
                         ),
                       );
                     },
@@ -84,7 +84,7 @@ class _ClubsAddedWidgetState extends State<ClubsAddedWidget> {
                 },
                 child: Text(
                   valueOrDefault<String>(
-                    widget.clubsDoc?.title,
+                    widget.athleticsDoc?.title,
                     'title',
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -103,7 +103,7 @@ class _ClubsAddedWidgetState extends State<ClubsAddedWidget> {
                   size: 24.0,
                 ),
                 onPressed: () async {
-                  await widget.clubsDoc!.reference.delete();
+                  await widget.athleticsDoc!.reference.delete();
                 },
               ),
             ],

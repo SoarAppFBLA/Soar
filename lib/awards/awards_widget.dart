@@ -1,7 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/add_grade_input_widget.dart';
-import '/components/add_grade_widget.dart';
+import '/components/add_athletics_widget.dart';
+import '/components/althletics_added_widget.dart';
 import '/components/want_to_delete_widget.dart';
 import '/components/want_to_logout_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -9,31 +9,25 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'academic_calc_model.dart';
-export 'academic_calc_model.dart';
+import 'awards_model.dart';
+export 'awards_model.dart';
 
-class AcademicCalcWidget extends StatefulWidget {
-  const AcademicCalcWidget({super.key});
+class AwardsWidget extends StatefulWidget {
+  const AwardsWidget({super.key});
 
   @override
-  State<AcademicCalcWidget> createState() => _AcademicCalcWidgetState();
+  State<AwardsWidget> createState() => _AwardsWidgetState();
 }
 
-class _AcademicCalcWidgetState extends State<AcademicCalcWidget> {
-  late AcademicCalcModel _model;
+class _AwardsWidgetState extends State<AwardsWidget> {
+  late AwardsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AcademicCalcModel());
-
-    _model.unweightedGPATextController ??= TextEditingController();
-    _model.unweightedGPAFocusNode ??= FocusNode();
-
-    _model.weightedGPATextController ??= TextEditingController();
-    _model.weightedGPAFocusNode ??= FocusNode();
+    _model = createModel(context, () => AwardsModel());
   }
 
   @override
@@ -65,7 +59,7 @@ class _AcademicCalcWidgetState extends State<AcademicCalcWidget> {
                       : FocusScope.of(context).unfocus(),
                   child: Padding(
                     padding: MediaQuery.viewInsetsOf(context),
-                    child: const AddGradeInputWidget(),
+                    child: const AddAthleticsWidget(),
                   ),
                 );
               },
@@ -73,10 +67,13 @@ class _AcademicCalcWidgetState extends State<AcademicCalcWidget> {
           },
           backgroundColor: FlutterFlowTheme.of(context).primary,
           elevation: 8.0,
-          child: Icon(
-            Icons.add_rounded,
-            color: FlutterFlowTheme.of(context).primaryText,
-            size: 40.0,
+          child: Container(
+            decoration: const BoxDecoration(),
+            child: Icon(
+              Icons.add_rounded,
+              color: FlutterFlowTheme.of(context).primaryText,
+              size: 35.0,
+            ),
           ),
         ),
         drawer: Drawer(
@@ -217,7 +214,7 @@ class _AcademicCalcWidgetState extends State<AcademicCalcWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.pushNamed('athletics');
+                        context.pushNamed('awards');
                       },
                       child: ListTile(
                         title: Text(
@@ -668,260 +665,118 @@ class _AcademicCalcWidgetState extends State<AcademicCalcWidget> {
             ),
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 24.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    FlutterFlowIconButton(
-                      borderRadius: 20.0,
-                      borderWidth: 1.0,
-                      buttonSize: 40.0,
-                      icon: Icon(
-                        Icons.menu_rounded,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 24.0,
-                      ),
-                      onPressed: () async {
-                        scaffoldKey.currentState!.openDrawer();
-                      },
-                    ),
-                    Text(
-                      'Academics',
-                      style:
-                          FlutterFlowTheme.of(context).headlineMedium.override(
-                                fontFamily: 'Inter',
-                                letterSpacing: 0.0,
-                              ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        controller: _model.unweightedGPATextController,
-                        focusNode: _model.unweightedGPAFocusNode,
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: 'Unweighted GPA',
-                          labelStyle: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
-                                fontFamily: 'Inter',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                letterSpacing: 0.0,
-                              ),
-                          hintText: 'Enter grades...',
-                          hintStyle:
-                              FlutterFlowTheme.of(context).labelLarge.override(
-                                    fontFamily: 'Inter',
-                                    letterSpacing: 0.0,
-                                  ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(24.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(24.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(24.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(24.0),
-                          ),
-                          filled: true,
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                              24.0, 26.0, 24.0, 26.0),
+        body: SafeArea(
+          top: true,
+          child: Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      FlutterFlowIconButton(
+                        borderRadius: 20.0,
+                        borderWidth: 1.0,
+                        buttonSize: 40.0,
+                        fillColor:
+                            FlutterFlowTheme.of(context).primaryBackground,
+                        icon: Icon(
+                          Icons.menu_rounded,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 24.0,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        onPressed: () async {
+                          scaffoldKey.currentState!.openDrawer();
+                        },
+                      ),
+                      Text(
+                        'Awards',
+                        style: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .override(
                               fontFamily: 'Inter',
-                              color: FlutterFlowTheme.of(context).primaryText,
                               letterSpacing: 0.0,
                             ),
-                        validator: _model.unweightedGPATextControllerValidator
-                            .asValidator(context),
                       ),
-                    ),
-                    Expanded(
-                      child: TextFormField(
-                        controller: _model.weightedGPATextController,
-                        focusNode: _model.weightedGPAFocusNode,
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: 'Weighted GPA',
-                          labelStyle: FlutterFlowTheme.of(context)
-                              .labelMedium
-                              .override(
-                                fontFamily: 'Inter',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                letterSpacing: 0.0,
-                              ),
-                          hintText: 'Enter grades...',
-                          hintStyle:
-                              FlutterFlowTheme.of(context).labelLarge.override(
-                                    fontFamily: 'Inter',
-                                    letterSpacing: 0.0,
-                                  ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(24.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(24.0),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(24.0),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(24.0),
-                          ),
-                          filled: true,
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                              24.0, 26.0, 24.0, 26.0),
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              letterSpacing: 0.0,
-                            ),
-                        validator: _model.weightedGPATextControllerValidator
-                            .asValidator(context),
-                      ),
-                    ),
-                  ].divide(const SizedBox(width: 8.0)),
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    await AcademicsRecord.collection
-                        .doc()
-                        .set(createAcademicsRecordData(
-                          uid: currentUserUid,
-                          gpaUnweighted: double.tryParse(
-                              _model.unweightedGPATextController.text),
-                          gpaWeighted: double.tryParse(
-                              _model.weightedGPATextController.text),
-                        ));
-                  },
-                  text: 'Save GPAs',
-                  options: FFButtonOptions(
-                    width: double.infinity,
-                    height: 28.0,
+                Expanded(
+                  child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                    iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
-                    textStyle:
-                        FlutterFlowTheme.of(context).headlineSmall.override(
-                              fontFamily: 'Inter',
-                              fontSize: 13.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.normal,
-                            ),
-                    elevation: 0.0,
-                    borderSide: const BorderSide(
-                      width: 1.0,
-                    ),
-                    borderRadius: BorderRadius.circular(24.0),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: StreamBuilder<List<AcademicsRecord>>(
-                  stream: queryAcademicsRecord(
-                    queryBuilder: (academicsRecord) => academicsRecord.where(
-                      'uid',
-                      isEqualTo: currentUserUid,
-                    ),
-                  ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primary,
-                            ),
-                          ),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                    child: StreamBuilder<List<AthleticsRecord>>(
+                      stream: queryAthleticsRecord(
+                        queryBuilder: (athleticsRecord) =>
+                            athleticsRecord.where(
+                          'uid',
+                          isEqualTo: currentUserUid,
                         ),
-                      );
-                    }
-                    List<AcademicsRecord> gradesAcademicsRecordList =
-                        snapshot.data!;
-                    return ListView.separated(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: gradesAcademicsRecordList.length,
-                      separatorBuilder: (_, __) => const SizedBox(height: 12.0),
-                      itemBuilder: (context, gradesIndex) {
-                        final gradesAcademicsRecord =
-                            gradesAcademicsRecordList[gradesIndex];
-                        return AddGradeWidget(
-                          key: Key(
-                              'Keyxoe_${gradesIndex}_of_${gradesAcademicsRecordList.length}'),
-                          academicDoc: gradesAcademicsRecord,
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                        List<AthleticsRecord> listViewAthleticsRecordList =
+                            snapshot.data!;
+                        return ListView.separated(
+                          padding: EdgeInsets.zero,
+                          scrollDirection: Axis.vertical,
+                          itemCount: listViewAthleticsRecordList.length,
+                          separatorBuilder: (_, __) => const SizedBox(height: 12.0),
+                          itemBuilder: (context, listViewIndex) {
+                            final listViewAthleticsRecord =
+                                listViewAthleticsRecordList[listViewIndex];
+                            return AlthleticsAddedWidget(
+                              key: Key(
+                                  'Keym8f_${listViewIndex}_of_${listViewAthleticsRecordList.length}'),
+                              athleticsDoc: listViewAthleticsRecord,
+                            );
+                          },
                         );
                       },
-                    );
-                  },
+                    ),
+                  ),
                 ),
-              ),
-            ].divide(const SizedBox(height: 12.0)),
+                Expanded(
+                  child: Opacity(
+                    opacity: 0.4,
+                    child: Container(
+                      width: double.infinity,
+                      height: 100.0,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            FlutterFlowTheme.of(context).primaryBackground,
+                            FlutterFlowTheme.of(context).secondary,
+                            FlutterFlowTheme.of(context).primary,
+                            FlutterFlowTheme.of(context).primaryBackground
+                          ],
+                          stops: const [0.0, 0.5, 0.7, 1.0],
+                          begin: const AlignmentDirectional(0.0, -1.0),
+                          end: const AlignmentDirectional(0, 1.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ].divide(const SizedBox(height: 12.0)),
+            ),
           ),
         ),
       ),
