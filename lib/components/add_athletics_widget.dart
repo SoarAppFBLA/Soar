@@ -396,7 +396,7 @@ class _AddAthleticsWidgetState extends State<AddAthleticsWidget> {
                       child: TextFormField(
                         controller: _model.resultFTextController,
                         focusNode: _model.resultFFocusNode,
-                        autofocus: true,
+                        autofocus: false,
                         readOnly: true,
                         obscureText: false,
                         decoration: InputDecoration(
@@ -465,7 +465,7 @@ class _AddAthleticsWidgetState extends State<AddAthleticsWidget> {
                       child: TextFormField(
                         controller: _model.resultTTextController,
                         focusNode: _model.resultTFocusNode,
-                        autofocus: true,
+                        autofocus: false,
                         readOnly: true,
                         obscureText: false,
                         decoration: InputDecoration(

@@ -226,7 +226,7 @@ class _AddCommunityServiceWidgetState extends State<AddCommunityServiceWidget> {
               TextFormField(
                 controller: _model.hoursTextController,
                 focusNode: _model.hoursFocusNode,
-                autofocus: true,
+                autofocus: false,
                 obscureText: false,
                 decoration: InputDecoration(
                   labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
@@ -460,7 +460,7 @@ class _AddCommunityServiceWidgetState extends State<AddCommunityServiceWidget> {
                       child: TextFormField(
                         controller: _model.resultFTextController,
                         focusNode: _model.resultFFocusNode,
-                        autofocus: true,
+                        autofocus: false,
                         readOnly: true,
                         obscureText: false,
                         decoration: InputDecoration(
@@ -529,7 +529,7 @@ class _AddCommunityServiceWidgetState extends State<AddCommunityServiceWidget> {
                       child: TextFormField(
                         controller: _model.resultTTextController,
                         focusNode: _model.resultTFocusNode,
-                        autofocus: true,
+                        autofocus: false,
                         readOnly: true,
                         obscureText: false,
                         decoration: InputDecoration(

@@ -132,7 +132,7 @@ class _WhatInCommunityWidgetState extends State<WhatInCommunityWidget> {
                       child: TextFormField(
                         controller: _model.fromDateTextController,
                         focusNode: _model.fromDateFocusNode,
-                        autofocus: true,
+                        autofocus: false,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: 'From Date',
@@ -200,7 +200,7 @@ class _WhatInCommunityWidgetState extends State<WhatInCommunityWidget> {
                       child: TextFormField(
                         controller: _model.toDateTextController,
                         focusNode: _model.toDateFocusNode,
-                        autofocus: true,
+                        autofocus: false,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: 'To Date',

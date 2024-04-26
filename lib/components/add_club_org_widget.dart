@@ -457,7 +457,7 @@ class _AddClubOrgWidgetState extends State<AddClubOrgWidget> {
                       child: TextFormField(
                         controller: _model.resultFTextController,
                         focusNode: _model.resultFFocusNode,
-                        autofocus: true,
+                        autofocus: false,
                         readOnly: true,
                         obscureText: false,
                         decoration: InputDecoration(
@@ -526,7 +526,7 @@ class _AddClubOrgWidgetState extends State<AddClubOrgWidget> {
                       child: TextFormField(
                         controller: _model.resultTTextController,
                         focusNode: _model.resultTFocusNode,
-                        autofocus: true,
+                        autofocus: false,
                         readOnly: true,
                         obscureText: false,
                         decoration: InputDecoration(

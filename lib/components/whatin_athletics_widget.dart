@@ -117,7 +117,7 @@ class _WhatinAthleticsWidgetState extends State<WhatinAthleticsWidget> {
                     child: TextFormField(
                       controller: _model.fromDateTextController,
                       focusNode: _model.fromDateFocusNode,
-                      autofocus: true,
+                      autofocus: false,
                       readOnly: true,
                       obscureText: false,
                       decoration: InputDecoration(
@@ -186,7 +186,7 @@ class _WhatinAthleticsWidgetState extends State<WhatinAthleticsWidget> {
                     child: TextFormField(
                       controller: _model.toDateTextController,
                       focusNode: _model.toDateFocusNode,
-                      autofocus: true,
+                      autofocus: false,
                       readOnly: true,
                       obscureText: false,
                       decoration: InputDecoration(

@@ -95,7 +95,7 @@ class _AddArtWidgetState extends State<AddArtWidget> {
               TextFormField(
                 controller: _model.titleTextController,
                 focusNode: _model.titleFocusNode,
-                autofocus: true,
+                autofocus: false,
                 obscureText: false,
                 decoration: InputDecoration(
                   labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
@@ -153,7 +153,7 @@ class _AddArtWidgetState extends State<AddArtWidget> {
               TextFormField(
                 controller: _model.detailsTextController,
                 focusNode: _model.detailsFocusNode,
-                autofocus: true,
+                autofocus: false,
                 obscureText: false,
                 decoration: InputDecoration(
                   labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
