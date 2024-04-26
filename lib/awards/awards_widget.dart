@@ -57,8 +57,10 @@ class _AwardsWidgetState extends State<AwardsWidget> {
                   onTap: () => _model.unfocusNode.canRequestFocus
                       ? FocusScope.of(context).requestFocus(_model.unfocusNode)
                       : FocusScope.of(context).unfocus(),
+                  // Child widget is a Padding containing AddAwardWidget
                   child: Padding(
                     padding: MediaQuery.viewInsetsOf(context),
+                    // Display AddAwardWidget
                     child: const AddAwardWidget(),
                   ),
                 );
