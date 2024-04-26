@@ -57,8 +57,10 @@ class _ClubsWidgetState extends State<ClubsWidget> {
                   onTap: () => _model.unfocusNode.canRequestFocus
                       ? FocusScope.of(context).requestFocus(_model.unfocusNode)
                       : FocusScope.of(context).unfocus(),
+                  // Child widget is a Padding containing AddClubOrgWidget
                   child: Padding(
                     padding: MediaQuery.viewInsetsOf(context),
+                    // Display AddClubOrgWidget
                     child: const AddClubOrgWidget(),
                   ),
                 );
