@@ -60,11 +60,13 @@ class _AcademicCalcWidgetState extends State<AcademicCalcWidget> {
               context: context,
               builder: (context) {
                 return GestureDetector(
+                  // Child widget is a Padding containing AddGradeInputWidget
                   onTap: () => _model.unfocusNode.canRequestFocus
                       ? FocusScope.of(context).requestFocus(_model.unfocusNode)
                       : FocusScope.of(context).unfocus(),
                   child: Padding(
                     padding: MediaQuery.viewInsetsOf(context),
+                    // Display AddGradeInputWidget
                     child: const AddGradeInputWidget(),
                   ),
                 );
