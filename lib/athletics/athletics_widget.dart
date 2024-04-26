@@ -57,8 +57,10 @@ class _AthleticsWidgetState extends State<AthleticsWidget> {
                   onTap: () => _model.unfocusNode.canRequestFocus
                       ? FocusScope.of(context).requestFocus(_model.unfocusNode)
                       : FocusScope.of(context).unfocus(),
+                  // Child widget is a Padding containing AddAthleticsWidget
                   child: Padding(
                     padding: MediaQuery.viewInsetsOf(context),
+                    // Display AddAthleticsWidget
                     child: const AddAthleticsWidget(),
                   ),
                 );
