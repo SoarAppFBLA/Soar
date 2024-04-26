@@ -58,95 +58,98 @@ class _AddGradeWidgetState extends State<AddGradeWidget> {
         ),
         child: Padding(
           padding: const EdgeInsetsDirectional.fromSTEB(9.0, 0.0, 9.0, 0.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  await showModalBottomSheet(
-                    isScrollControlled: true,
-                    backgroundColor: Colors.transparent,
-                    enableDrag: false,
-                    context: context,
-                    builder: (context) {
-                      return Padding(
-                        padding: MediaQuery.viewInsetsOf(context),
-                        child: WhatInAcademicWidget(
-                          academicDoc: widget.academicDoc!,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    await showModalBottomSheet(
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      enableDrag: false,
+                      context: context,
+                      builder: (context) {
+                        return Padding(
+                          padding: MediaQuery.viewInsetsOf(context),
+                          child: WhatInAcademicWidget(
+                            academicDoc: widget.academicDoc!,
+                          ),
+                        );
+                      },
+                    ).then((value) => safeSetState(() {}));
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        valueOrDefault<String>(
+                          widget.academicDoc?.year,
+                          '9',
                         ),
-                      );
-                    },
-                  ).then((value) => safeSetState(() {}));
-                },
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      valueOrDefault<String>(
-                        widget.academicDoc?.year,
-                        '9',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Inter',
+                              fontSize: 15.0,
+                              letterSpacing: 0.0,
+                            ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
-                            fontSize: 15.0,
-                            letterSpacing: 0.0,
-                          ),
-                    ),
-                    Text(
-                      valueOrDefault<String>(
-                        widget.academicDoc?.className,
-                        'Chemistry',
+                      Text(
+                        valueOrDefault<String>(
+                          widget.academicDoc?.className,
+                          'Chemistry',
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Inter',
+                              fontSize: 15.0,
+                              letterSpacing: 0.0,
+                            ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
-                            fontSize: 15.0,
-                            letterSpacing: 0.0,
-                          ),
-                    ),
-                    Text(
-                      valueOrDefault<String>(
-                        widget.academicDoc?.typeClass,
-                        'honors',
+                      Text(
+                        valueOrDefault<String>(
+                          widget.academicDoc?.typeClass,
+                          'honors',
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Inter',
+                              fontSize: 15.0,
+                              letterSpacing: 0.0,
+                            ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
-                            fontSize: 15.0,
-                            letterSpacing: 0.0,
-                          ),
-                    ),
-                    Text(
-                      valueOrDefault<String>(
-                        widget.academicDoc?.grade,
-                        'A',
+                      Text(
+                        valueOrDefault<String>(
+                          widget.academicDoc?.grade,
+                          'A',
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Inter',
+                              fontSize: 15.0,
+                              letterSpacing: 0.0,
+                            ),
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
-                            fontSize: 15.0,
-                            letterSpacing: 0.0,
-                          ),
-                    ),
-                  ].divide(const SizedBox(width: 4.0)),
+                    ].divide(const SizedBox(width: 4.0)),
+                  ),
                 ),
-              ),
-              FlutterFlowIconButton(
-                borderRadius: 20.0,
-                borderWidth: 1.0,
-                buttonSize: 40.0,
-                icon: Icon(
-                  Icons.delete_rounded,
-                  color: FlutterFlowTheme.of(context).secondaryText,
-                  size: 24.0,
+                FlutterFlowIconButton(
+                  borderRadius: 20.0,
+                  borderWidth: 1.0,
+                  buttonSize: 40.0,
+                  icon: Icon(
+                    Icons.delete_rounded,
+                    color: FlutterFlowTheme.of(context).secondaryText,
+                    size: 24.0,
+                  ),
+                  onPressed: () async {
+                    await widget.academicDoc!.reference.delete();
+                  },
                 ),
-                onPressed: () async {
-                  await widget.academicDoc!.reference.delete();
-                },
-              ),
-            ].divide(const SizedBox(width: 6.0)),
+              ].divide(const SizedBox(width: 6.0)),
+            ),
           ),
         ),
       ),

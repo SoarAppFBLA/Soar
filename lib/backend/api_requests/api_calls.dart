@@ -10,9 +10,7 @@ class FbpostingCall {
   static Future<ApiCallResponse> call({
     String? soarMessage = 'Hello',
     String? fbToken =
-        'EAALBnKwuAaQBO1TZBxzzObP84xzovCtBdDFbIQDUe7GEGcIz4xgjV3Rk7X0UBhD4j58kZArlzCZCKScZAnMHZALiABER3W9AWKA1sZCfZBkWdoQv3pzBdtW61ZAZBEHBHKQlUp0v8FflE62l0WAyGGsgboxLdQZBbxGuEZAO0K8E7ZALiGU3SNL7i3OBfxtZAQNQitKfiM2h5qwECZAF9Y6zOOrW8nN4ZCF4kp8KAob',
-    String? imagepath =
-        'https://media.4-paws.org/1/e/d/6/1ed6da75afe37d82757142dc7c6633a532f53a7d/VIER%20PFOTEN_2019-03-15_001-2886x1999-1920x1330.jpg',
+        'EAALBnKwuAaQBO0ZCfrgJQ28SvgmZCgMbjU2dGjOwclz3hNs0A5K7ZC8NNV9N21hLcYZArZCMO2ocdZCDZB16wv9hlzXTOZCCkDjJ6WLn3q3hvZBVctAq5IDXZCca62LAZBM0ZAu785TZAPv4E4fExZAQ0et9sr6EHZC8tBbqOaNpEtHL6gd9ddZAka2HIcIIpBdyxlLV89nB1bjD03j3',
   }) async {
     const ffApiRequestBody = '''
 ''';
