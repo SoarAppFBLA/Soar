@@ -57,8 +57,10 @@ class _PerformingArtsWidgetState extends State<PerformingArtsWidget> {
                   onTap: () => _model.unfocusNode.canRequestFocus
                       ? FocusScope.of(context).requestFocus(_model.unfocusNode)
                       : FocusScope.of(context).unfocus(),
+                 // Child widget is a Padding containing AddArtWidget 
                   child: Padding(
                     padding: MediaQuery.viewInsetsOf(context),
+                    // Display AddArtWidget
                     child: const AddArtWidget(),
                   ),
                 );
