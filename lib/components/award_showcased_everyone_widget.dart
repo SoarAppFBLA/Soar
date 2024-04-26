@@ -79,42 +79,31 @@ class _AwardShowcasedEveryoneWidgetState
                 },
               ).then((value) => safeSetState(() {}));
             },
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  width: 35.0,
-                  height: 35.0,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                  ),
-                  child: Image.network(
-                    valueOrDefault<String>(
-                      widget.showcaseAwardsDoc?.photoUrl,
-                      'user pic',
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 35.0,
+                    height: 35.0,
+                    clipBehavior: Clip.antiAlias,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
                     ),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Text(
-                  valueOrDefault<String>(
-                    widget.showcaseAwardsDoc?.displayName,
-                    'name',
-                  ),
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
-                        fontSize: 12.0,
-                        letterSpacing: 0.0,
+                    child: Image.network(
+                      valueOrDefault<String>(
+                        widget.showcaseAwardsDoc?.photoUrl,
+                        'user pic',
                       ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
-                  child: Text(
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Text(
                     valueOrDefault<String>(
-                      widget.showcaseAwardsDoc?.title,
-                      'title',
+                      widget.showcaseAwardsDoc?.displayName,
+                      'name',
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Inter',
@@ -122,8 +111,23 @@ class _AwardShowcasedEveryoneWidgetState
                           letterSpacing: 0.0,
                         ),
                   ),
-                ),
-              ].divide(const SizedBox(width: 5.0)),
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                    child: Text(
+                      valueOrDefault<String>(
+                        widget.showcaseAwardsDoc?.title,
+                        'title',
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Inter',
+                            fontSize: 12.0,
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                  ),
+                ].divide(const SizedBox(width: 5.0)),
+              ),
             ),
           ),
         ),

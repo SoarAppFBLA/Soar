@@ -104,31 +104,34 @@ class _WhatInAcademicWidgetState extends State<WhatInAcademicWidget> {
                 ),
               ].divide(const SizedBox(width: 5.0)),
             ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  valueOrDefault<String>(
-                    widget.academicDoc?.typeClass,
-                    'class type',
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    valueOrDefault<String>(
+                      widget.academicDoc?.typeClass,
+                      'class type',
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Inter',
+                          letterSpacing: 0.0,
+                        ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
-                        letterSpacing: 0.0,
-                      ),
-                ),
-                Text(
-                  valueOrDefault<String>(
-                    widget.academicDoc?.grade,
-                    'grade',
+                  Text(
+                    valueOrDefault<String>(
+                      widget.academicDoc?.grade,
+                      'grade',
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Inter',
+                          letterSpacing: 0.0,
+                        ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
-                        letterSpacing: 0.0,
-                      ),
-                ),
-              ],
+                ].divide(const SizedBox(width: 10.0)),
+              ),
             ),
             Text(
               valueOrDefault<String>(

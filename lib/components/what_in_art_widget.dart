@@ -55,72 +55,74 @@ class _WhatInArtWidgetState extends State<WhatInArtWidget> {
       ),
       child: Padding(
         padding: const EdgeInsets.all(24.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                FlutterFlowIconButton(
-                  borderRadius: 20.0,
-                  borderWidth: 1.0,
-                  buttonSize: 50.0,
-                  icon: Icon(
-                    Icons.close,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    size: 30.0,
-                  ),
-                  onPressed: () async {
-                    Navigator.pop(context);
-                  },
-                ),
-              ],
-            ),
-            Text(
-              valueOrDefault<String>(
-                widget.artDoc?.title,
-                'Performing Art',
-              ),
-              style: FlutterFlowTheme.of(context).headlineLarge.override(
-                    fontFamily: 'Inter',
-                    letterSpacing: 0.0,
-                  ),
-            ),
-            Text(
-              valueOrDefault<String>(
-                widget.artDoc?.details,
-                'Details',
-              ),
-              textAlign: TextAlign.start,
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Inter',
-                    letterSpacing: 0.0,
-                  ),
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  width: 120.0,
-                  height: 120.0,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                  ),
-                  child: Image.network(
-                    valueOrDefault<String>(
-                      widget.artDoc?.image,
-                      'Image',
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  FlutterFlowIconButton(
+                    borderRadius: 20.0,
+                    borderWidth: 1.0,
+                    buttonSize: 50.0,
+                    icon: Icon(
+                      Icons.close,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 30.0,
                     ),
-                    fit: BoxFit.cover,
+                    onPressed: () async {
+                      Navigator.pop(context);
+                    },
                   ),
+                ],
+              ),
+              Text(
+                valueOrDefault<String>(
+                  widget.artDoc?.title,
+                  'Performing Art',
                 ),
-              ],
-            ),
-          ].divide(const SizedBox(height: 24.0)),
+                style: FlutterFlowTheme.of(context).headlineLarge.override(
+                      fontFamily: 'Inter',
+                      letterSpacing: 0.0,
+                    ),
+              ),
+              Text(
+                valueOrDefault<String>(
+                  widget.artDoc?.details,
+                  'Details',
+                ),
+                textAlign: TextAlign.start,
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Inter',
+                      letterSpacing: 0.0,
+                    ),
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: 120.0,
+                    height: 120.0,
+                    clipBehavior: Clip.antiAlias,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Image.network(
+                      valueOrDefault<String>(
+                        widget.artDoc?.image,
+                        'Image',
+                      ),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
+              ),
+            ].divide(const SizedBox(height: 24.0)),
+          ),
         ),
       ),
     );
