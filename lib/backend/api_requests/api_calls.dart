@@ -10,7 +10,7 @@ class FbpostingCall {
   static Future<ApiCallResponse> call({
     String? soarMessage = 'Hello',
     String? fbToken =
-        'EAALBnKwuAaQBO0UBOv4LHJTz1WthTxaRXApcRCV3NZAC8BIuRlS4TZBB8tiIabvGVzFsjx64hXEfUJSYNGZAHGVMLOX7VEZAiGrxy0YPUFoMr4qPFxGZBPDcduu6YhayhZCzdhrZAZAe3JiE7U252UsJgXkYrwN1NxS3x5Ye0UcdP5dVMZC5tsZCf77ClBjhaLdKkxZA0xcnyUajdPZAv99GrbdI3bPDmqZBADuKOGgZDZD',
+        'EAALBnKwuAaQBOZCOYPxdlKDIdfQ8ZC9OZCJy5ZC6KUHLdExghTtJSLcU6adPSPdUQzy98RQFRi8kXhKPS3YwRDu5BSzZAGpwZA5YGH7nJJpCRxASnpJGh2NcdMe5nNi1tjNaqbUGJZCLFnIwl88ghFI0zbQiFGaCOZB4KTWKqLPJYHfEuHlisZBbayFvpU7RGZAMujbqp2kTBv6YQdo7KGCkm9iDm7g3pEgDEi',
     String? imagepath =
         'https://media.4-paws.org/1/e/d/6/1ed6da75afe37d82757142dc7c6633a532f53a7d/VIER%20PFOTEN_2019-03-15_001-2886x1999-1920x1330.jpg',
   }) async {

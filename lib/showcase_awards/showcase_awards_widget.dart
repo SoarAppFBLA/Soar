@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/add_award_widget.dart';
-import '/components/awards_added_widget.dart';
+import '/components/award_showcased_everyone_widget.dart';
 import '/components/want_to_delete_widget.dart';
 import '/components/want_to_logout_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -9,25 +8,25 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'awards_model.dart';
-export 'awards_model.dart';
+import 'showcase_awards_model.dart';
+export 'showcase_awards_model.dart';
 
-class AwardsWidget extends StatefulWidget {
-  const AwardsWidget({super.key});
+class ShowcaseAwardsWidget extends StatefulWidget {
+  const ShowcaseAwardsWidget({super.key});
 
   @override
-  State<AwardsWidget> createState() => _AwardsWidgetState();
+  State<ShowcaseAwardsWidget> createState() => _ShowcaseAwardsWidgetState();
 }
 
-class _AwardsWidgetState extends State<AwardsWidget> {
-  late AwardsModel _model;
+class _ShowcaseAwardsWidgetState extends State<ShowcaseAwardsWidget> {
+  late ShowcaseAwardsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AwardsModel());
+    _model = createModel(context, () => ShowcaseAwardsModel());
   }
 
   @override
@@ -46,36 +45,6 @@ class _AwardsWidgetState extends State<AwardsWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () async {
-            await showModalBottomSheet(
-              isScrollControlled: true,
-              backgroundColor: Colors.transparent,
-              context: context,
-              builder: (context) {
-                return GestureDetector(
-                  onTap: () => _model.unfocusNode.canRequestFocus
-                      ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                      : FocusScope.of(context).unfocus(),
-                  child: Padding(
-                    padding: MediaQuery.viewInsetsOf(context),
-                    child: const AddAwardWidget(),
-                  ),
-                );
-              },
-            ).then((value) => safeSetState(() {}));
-          },
-          backgroundColor: FlutterFlowTheme.of(context).primary,
-          elevation: 8.0,
-          child: Container(
-            decoration: const BoxDecoration(),
-            child: Icon(
-              Icons.add_rounded,
-              color: FlutterFlowTheme.of(context).primaryText,
-              size: 35.0,
-            ),
-          ),
-        ),
         drawer: Drawer(
           elevation: 16.0,
           child: Padding(
@@ -736,131 +705,200 @@ class _AwardsWidgetState extends State<AwardsWidget> {
             ),
           ),
         ),
-        body: SafeArea(
-          top: true,
-          child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      FlutterFlowIconButton(
-                        borderRadius: 20.0,
-                        borderWidth: 1.0,
-                        buttonSize: 40.0,
-                        fillColor:
-                            FlutterFlowTheme.of(context).primaryBackground,
-                        icon: Icon(
-                          Icons.menu_rounded,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 24.0,
-                        ),
-                        onPressed: () async {
-                          scaffoldKey.currentState!.openDrawer();
-                        },
-                      ),
-                      Text(
-                        'Awards',
-                        style: FlutterFlowTheme.of(context)
-                            .headlineMedium
-                            .override(
-                              fontFamily: 'Inter',
-                              letterSpacing: 0.0,
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                  child: Text(
-                    'The following added awards will be shown on the Soar Awards Showcase! Deletion is only for personal purposes and will NOT delete in the showcase!',
-                    style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily: 'Inter',
-                          color: FlutterFlowTheme.of(context).error,
-                          fontSize: 12.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.normal,
-                        ),
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                    child: StreamBuilder<List<AwardRecord>>(
-                      stream: queryAwardRecord(
-                        queryBuilder: (awardRecord) => awardRecord.where(
-                          'uid',
-                          isEqualTo: currentUserUid,
-                        ),
-                      ),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  FlutterFlowTheme.of(context).primary,
-                                ),
-                              ),
-                            ),
-                          );
-                        }
-                        List<AwardRecord> listViewAwardRecordList =
-                            snapshot.data!;
-                        return ListView.separated(
-                          padding: EdgeInsets.zero,
-                          scrollDirection: Axis.vertical,
-                          itemCount: listViewAwardRecordList.length,
-                          separatorBuilder: (_, __) => const SizedBox(height: 12.0),
-                          itemBuilder: (context, listViewIndex) {
-                            final listViewAwardRecord =
-                                listViewAwardRecordList[listViewIndex];
-                            return AwardsAddedWidget(
-                              key: Key(
-                                  'Keyedy_${listViewIndex}_of_${listViewAwardRecordList.length}'),
-                              awardDoc: listViewAwardRecord,
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Opacity(
-                    opacity: 0.4,
-                    child: Container(
+        body: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: SizedBox(
+                width: double.infinity,
+                child: Stack(
+                  children: [
+                    Container(
                       width: double.infinity,
-                      height: 100.0,
+                      height: 288.0,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            FlutterFlowTheme.of(context).primaryBackground,
-                            FlutterFlowTheme.of(context).secondary,
                             FlutterFlowTheme.of(context).primary,
-                            FlutterFlowTheme.of(context).primaryBackground
+                            FlutterFlowTheme.of(context).secondary
                           ],
-                          stops: const [0.0, 0.5, 0.7, 1.0],
-                          begin: const AlignmentDirectional(0.0, -1.0),
-                          end: const AlignmentDirectional(0, 1.0),
+                          stops: const [0.0, 1.0],
+                          begin: const AlignmentDirectional(1.0, -0.34),
+                          end: const AlignmentDirectional(-1.0, 0.34),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(24.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 20.0, 0.0, 0.0),
+                              child: FlutterFlowIconButton(
+                                borderRadius: 20.0,
+                                borderWidth: 1.0,
+                                buttonSize: 40.0,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                icon: Icon(
+                                  Icons.menu_rounded,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
+                                onPressed: () async {
+                                  scaffoldKey.currentState!.openDrawer();
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 12.0, 0.0, 0.0),
+                              child: AuthUserStreamWidget(
+                                builder: (context) => InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed('onboarding');
+                                  },
+                                  child: Container(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: Image.network(
+                                          currentUserPhoto,
+                                        ).image,
+                                      ),
+                                      borderRadius: BorderRadius.circular(50.0),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                  ),
+                    Align(
+                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 100.0, 0.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: const BorderRadius.only(
+                              bottomLeft: Radius.circular(0.0),
+                              bottomRight: Radius.circular(0.0),
+                              topLeft: Radius.circular(50.0),
+                              topRight: Radius.circular(50.0),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 50.0, 0.0, 0.0),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Container(
+                                    width: 72.0,
+                                    height: 72.0,
+                                    clipBehavior: Clip.antiAlias,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Image.asset(
+                                      'assets/images/SKYCHIEVE.png',
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Soar Award Showcase',
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          fontSize: 22.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                  ),
+                                  Text(
+                                    'Look at these soaring awards!',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ].divide(const SizedBox(height: 15.0)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ].divide(const SizedBox(height: 12.0)),
+              ),
             ),
-          ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                child: StreamBuilder<List<ShowcaseAwardsRecord>>(
+                  stream: queryShowcaseAwardsRecord(),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              FlutterFlowTheme.of(context).primary,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                    List<ShowcaseAwardsRecord>
+                        listViewShowcaseAwardsRecordList = snapshot.data!;
+                    return ListView.separated(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: listViewShowcaseAwardsRecordList.length,
+                      separatorBuilder: (_, __) => const SizedBox(height: 12.0),
+                      itemBuilder: (context, listViewIndex) {
+                        final listViewShowcaseAwardsRecord =
+                            listViewShowcaseAwardsRecordList[listViewIndex];
+                        return AwardShowcasedEveryoneWidget(
+                          key: Key(
+                              'Key3og_${listViewIndex}_of_${listViewShowcaseAwardsRecordList.length}'),
+                          showcaseAwardsDoc: listViewShowcaseAwardsRecord,
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -124,6 +124,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'awards',
           path: '/awards',
           builder: (context, params) => const AwardsWidget(),
+        ),
+        FFRoute(
+          name: 'showcaseAwards',
+          path: '/showcaseAwards',
+          builder: (context, params) => const ShowcaseAwardsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -154,6 +154,7 @@ class _AddAthleticsWidgetState extends State<AddAthleticsWidget> {
                     color: FlutterFlowTheme.of(context).primaryText,
                     letterSpacing: 0.0,
                   ),
+              maxLength: 20,
               validator:
                   _model.titleTextControllerValidator.asValidator(context),
             ),
@@ -213,6 +214,7 @@ class _AddAthleticsWidgetState extends State<AddAthleticsWidget> {
                   ),
               maxLines: null,
               minLines: 3,
+              maxLength: 100,
               validator:
                   _model.detailsTextControllerValidator.asValidator(context),
             ),

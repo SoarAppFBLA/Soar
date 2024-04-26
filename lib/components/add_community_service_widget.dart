@@ -158,6 +158,7 @@ class _AddCommunityServiceWidgetState extends State<AddCommunityServiceWidget> {
                     color: FlutterFlowTheme.of(context).primaryText,
                     letterSpacing: 0.0,
                   ),
+              maxLength: 20,
               validator:
                   _model.titleTextControllerValidator.asValidator(context),
             ),
@@ -217,6 +218,7 @@ class _AddCommunityServiceWidgetState extends State<AddCommunityServiceWidget> {
                   ),
               maxLines: null,
               minLines: 3,
+              maxLength: 100,
               validator:
                   _model.detailsTextControllerValidator.asValidator(context),
             ),
@@ -275,6 +277,7 @@ class _AddCommunityServiceWidgetState extends State<AddCommunityServiceWidget> {
                     color: FlutterFlowTheme.of(context).primaryText,
                     letterSpacing: 0.0,
                   ),
+              maxLength: 3,
               keyboardType: TextInputType.number,
               validator:
                   _model.hoursTextControllerValidator.asValidator(context),

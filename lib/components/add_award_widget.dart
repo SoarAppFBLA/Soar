@@ -1,25 +1,22 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_data.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'add_art_model.dart';
-export 'add_art_model.dart';
+import 'add_award_model.dart';
+export 'add_award_model.dart';
 
-class AddArtWidget extends StatefulWidget {
-  const AddArtWidget({super.key});
+class AddAwardWidget extends StatefulWidget {
+  const AddAwardWidget({super.key});
 
   @override
-  State<AddArtWidget> createState() => _AddArtWidgetState();
+  State<AddAwardWidget> createState() => _AddAwardWidgetState();
 }
 
-class _AddArtWidgetState extends State<AddArtWidget> {
-  late AddArtModel _model;
+class _AddAwardWidgetState extends State<AddAwardWidget> {
+  late AddAwardModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -30,7 +27,7 @@ class _AddArtWidgetState extends State<AddArtWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AddArtModel());
+    _model = createModel(context, () => AddAwardModel());
 
     _model.titleTextController ??= TextEditingController();
     _model.titleFocusNode ??= FocusNode();
@@ -85,7 +82,7 @@ class _AddArtWidgetState extends State<AddArtWidget> {
               ],
             ),
             Text(
-              'Add Performing Arts',
+              'Add Award',
               style: FlutterFlowTheme.of(context).headlineLarge.override(
                     fontFamily: 'Inter',
                     letterSpacing: 0.0,
@@ -145,7 +142,7 @@ class _AddArtWidgetState extends State<AddArtWidget> {
                     color: FlutterFlowTheme.of(context).primaryText,
                     letterSpacing: 0.0,
                   ),
-              maxLength: 20,
+              maxLength: 25,
               validator:
                   _model.titleTextControllerValidator.asValidator(context),
             ),
@@ -209,141 +206,11 @@ class _AddArtWidgetState extends State<AddArtWidget> {
               validator:
                   _model.detailsTextControllerValidator.asValidator(context),
             ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    final selectedMedia =
-                        await selectMediaWithSourceBottomSheet(
-                      context: context,
-                      maxWidth: 75.00,
-                      allowPhoto: true,
-                    );
-                    if (selectedMedia != null &&
-                        selectedMedia.every((m) =>
-                            validateFileFormat(m.storagePath, context))) {
-                      setState(() => _model.isDataUploading = true);
-                      var selectedUploadedFiles = <FFUploadedFile>[];
-
-                      var downloadUrls = <String>[];
-                      try {
-                        selectedUploadedFiles = selectedMedia
-                            .map((m) => FFUploadedFile(
-                                  name: m.storagePath.split('/').last,
-                                  bytes: m.bytes,
-                                  height: m.dimensions?.height,
-                                  width: m.dimensions?.width,
-                                  blurHash: m.blurHash,
-                                ))
-                            .toList();
-
-                        downloadUrls = (await Future.wait(
-                          selectedMedia.map(
-                            (m) async =>
-                                await uploadData(m.storagePath, m.bytes),
-                          ),
-                        ))
-                            .where((u) => u != null)
-                            .map((u) => u!)
-                            .toList();
-                      } finally {
-                        _model.isDataUploading = false;
-                      }
-                      if (selectedUploadedFiles.length ==
-                              selectedMedia.length &&
-                          downloadUrls.length == selectedMedia.length) {
-                        setState(() {
-                          _model.uploadedLocalFile =
-                              selectedUploadedFiles.first;
-                          _model.uploadedFileUrl = downloadUrls.first;
-                        });
-                      } else {
-                        setState(() {});
-                        return;
-                      }
-                    }
-                  },
-                  child: Stack(
-                    alignment: const AlignmentDirectional(-1.0, 1.0),
-                    children: [
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 8.0),
-                        child: Container(
-                          width: 75.0,
-                          height: 75.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: Image.network(
-                                _model.uploadedFileUrl,
-                              ).image,
-                            ),
-                            borderRadius: BorderRadius.circular(75.0),
-                            border: Border.all(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              width: 1.0,
-                            ),
-                          ),
-                        ),
-                      ),
-                      FlutterFlowIconButton(
-                        borderColor: FlutterFlowTheme.of(context).primaryText,
-                        borderRadius: 20.0,
-                        borderWidth: 1.0,
-                        buttonSize: 40.0,
-                        fillColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        icon: Icon(
-                          Icons.add,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 21.0,
-                        ),
-                        onPressed: () {
-                          print('IconButton pressed ...');
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 100.0,
-                  height: 100.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
-                  child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                    child: AutoSizeText(
-                      'Click on the circle and add a picture that describes the performing art or is the perfoming art!!!',
-                      textAlign: TextAlign.start,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            fontSize: 11.0,
-                            letterSpacing: 0.0,
-                            lineHeight: 1.0,
-                          ),
-                      minFontSize: 1.0,
-                    ),
-                  ),
-                ),
-              ],
-            ),
             FFButtonWidget(
               onPressed: () async {
-                await PerformingArtsRecord.collection
+                await ShowcaseAwardsRecord.collection
                     .doc()
-                    .set(createPerformingArtsRecordData(
+                    .set(createShowcaseAwardsRecordData(
                       title: valueOrDefault<String>(
                         _model.titleTextController.text,
                         'title',
@@ -352,8 +219,14 @@ class _AddArtWidgetState extends State<AddArtWidget> {
                         _model.detailsTextController.text,
                         'details',
                       ),
+                      displayName: currentUserDisplayName,
+                      photoUrl: currentUserPhoto,
+                    ));
+
+                await AwardRecord.collection.doc().set(createAwardRecordData(
                       uid: currentUserUid,
-                      image: _model.uploadedFileUrl,
+                      title: _model.titleTextController.text,
+                      details: _model.detailsTextController.text,
                     ));
                 Navigator.pop(context);
               },
@@ -375,6 +248,16 @@ class _AddArtWidgetState extends State<AddArtWidget> {
                 ),
                 borderRadius: BorderRadius.circular(24.0),
               ),
+            ),
+            Text(
+              'The following added awards will be shown on the Soar Awards Showcase! Deletion is only for personal purposes and will NOT delete in the showcase!',
+              style: FlutterFlowTheme.of(context).headlineMedium.override(
+                    fontFamily: 'Inter',
+                    color: FlutterFlowTheme.of(context).error,
+                    fontSize: 12.0,
+                    letterSpacing: 0.0,
+                    fontWeight: FontWeight.w500,
+                  ),
             ),
           ].divide(const SizedBox(height: 24.0)),
         ),

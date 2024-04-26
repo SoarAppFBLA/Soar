@@ -1,5 +1,5 @@
 import '/backend/backend.dart';
-import '/components/whatin_athletics_widget.dart';
+import '/components/what_in_award_not_showcase_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -10,10 +10,10 @@ export 'awards_added_model.dart';
 class AwardsAddedWidget extends StatefulWidget {
   const AwardsAddedWidget({
     super.key,
-    required this.athleticsDoc,
+    required this.awardDoc,
   });
 
-  final AthleticsRecord? athleticsDoc;
+  final AwardRecord? awardDoc;
 
   @override
   State<AwardsAddedWidget> createState() => _AwardsAddedWidgetState();
@@ -75,8 +75,8 @@ class _AwardsAddedWidgetState extends State<AwardsAddedWidget> {
                     builder: (context) {
                       return Padding(
                         padding: MediaQuery.viewInsetsOf(context),
-                        child: WhatinAthleticsWidget(
-                          athleticsDoc: widget.athleticsDoc!,
+                        child: WhatInAwardNotShowcaseWidget(
+                          awardDoc: widget.awardDoc!,
                         ),
                       );
                     },
@@ -84,7 +84,7 @@ class _AwardsAddedWidgetState extends State<AwardsAddedWidget> {
                 },
                 child: Text(
                   valueOrDefault<String>(
-                    widget.athleticsDoc?.title,
+                    widget.awardDoc?.title,
                     'title',
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -103,7 +103,7 @@ class _AwardsAddedWidgetState extends State<AwardsAddedWidget> {
                   size: 24.0,
                 ),
                 onPressed: () async {
-                  await widget.athleticsDoc!.reference.delete();
+                  await widget.awardDoc!.reference.delete();
                 },
               ),
             ],

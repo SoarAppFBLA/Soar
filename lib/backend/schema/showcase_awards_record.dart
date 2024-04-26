@@ -30,10 +30,22 @@ class ShowcaseAwardsRecord extends FirestoreRecord {
   String get details => _details ?? '';
   bool hasDetails() => _details != null;
 
+  // "photo_url" field.
+  String? _photoUrl;
+  String get photoUrl => _photoUrl ?? '';
+  bool hasPhotoUrl() => _photoUrl != null;
+
+  // "uid" field.
+  String? _uid;
+  String get uid => _uid ?? '';
+  bool hasUid() => _uid != null;
+
   void _initializeFields() {
     _displayName = snapshotData['display_name'] as String?;
     _title = snapshotData['title'] as String?;
     _details = snapshotData['details'] as String?;
+    _photoUrl = snapshotData['photo_url'] as String?;
+    _uid = snapshotData['uid'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -74,12 +86,16 @@ Map<String, dynamic> createShowcaseAwardsRecordData({
   String? displayName,
   String? title,
   String? details,
+  String? photoUrl,
+  String? uid,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'display_name': displayName,
       'title': title,
       'details': details,
+      'photo_url': photoUrl,
+      'uid': uid,
     }.withoutNulls,
   );
 
@@ -94,12 +110,14 @@ class ShowcaseAwardsRecordDocumentEquality
   bool equals(ShowcaseAwardsRecord? e1, ShowcaseAwardsRecord? e2) {
     return e1?.displayName == e2?.displayName &&
         e1?.title == e2?.title &&
-        e1?.details == e2?.details;
+        e1?.details == e2?.details &&
+        e1?.photoUrl == e2?.photoUrl &&
+        e1?.uid == e2?.uid;
   }
 
   @override
-  int hash(ShowcaseAwardsRecord? e) =>
-      const ListEquality().hash([e?.displayName, e?.title, e?.details]);
+  int hash(ShowcaseAwardsRecord? e) => const ListEquality()
+      .hash([e?.displayName, e?.title, e?.details, e?.photoUrl, e?.uid]);
 
   @override
   bool isValidKey(Object? o) => o is ShowcaseAwardsRecord;

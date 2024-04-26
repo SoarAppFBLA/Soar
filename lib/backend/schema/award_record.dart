@@ -7,8 +7,8 @@ import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 
-class AwardsRecord extends FirestoreRecord {
-  AwardsRecord._(
+class AwardRecord extends FirestoreRecord {
+  AwardRecord._(
     super.reference,
     super.data,
   ) {
@@ -37,39 +37,39 @@ class AwardsRecord extends FirestoreRecord {
   }
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('awards');
+      FirebaseFirestore.instance.collection('award');
 
-  static Stream<AwardsRecord> getDocument(DocumentReference ref) =>
-      ref.snapshots().map((s) => AwardsRecord.fromSnapshot(s));
+  static Stream<AwardRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => AwardRecord.fromSnapshot(s));
 
-  static Future<AwardsRecord> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then((s) => AwardsRecord.fromSnapshot(s));
+  static Future<AwardRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => AwardRecord.fromSnapshot(s));
 
-  static AwardsRecord fromSnapshot(DocumentSnapshot snapshot) => AwardsRecord._(
+  static AwardRecord fromSnapshot(DocumentSnapshot snapshot) => AwardRecord._(
         snapshot.reference,
         mapFromFirestore(snapshot.data() as Map<String, dynamic>),
       );
 
-  static AwardsRecord getDocumentFromData(
+  static AwardRecord getDocumentFromData(
     Map<String, dynamic> data,
     DocumentReference reference,
   ) =>
-      AwardsRecord._(reference, mapFromFirestore(data));
+      AwardRecord._(reference, mapFromFirestore(data));
 
   @override
   String toString() =>
-      'AwardsRecord(reference: ${reference.path}, data: $snapshotData)';
+      'AwardRecord(reference: ${reference.path}, data: $snapshotData)';
 
   @override
   int get hashCode => reference.path.hashCode;
 
   @override
   bool operator ==(other) =>
-      other is AwardsRecord &&
+      other is AwardRecord &&
       reference.path.hashCode == other.reference.path.hashCode;
 }
 
-Map<String, dynamic> createAwardsRecordData({
+Map<String, dynamic> createAwardRecordData({
   String? uid,
   String? title,
   String? details,
@@ -85,20 +85,20 @@ Map<String, dynamic> createAwardsRecordData({
   return firestoreData;
 }
 
-class AwardsRecordDocumentEquality implements Equality<AwardsRecord> {
-  const AwardsRecordDocumentEquality();
+class AwardRecordDocumentEquality implements Equality<AwardRecord> {
+  const AwardRecordDocumentEquality();
 
   @override
-  bool equals(AwardsRecord? e1, AwardsRecord? e2) {
+  bool equals(AwardRecord? e1, AwardRecord? e2) {
     return e1?.uid == e2?.uid &&
         e1?.title == e2?.title &&
         e1?.details == e2?.details;
   }
 
   @override
-  int hash(AwardsRecord? e) =>
+  int hash(AwardRecord? e) =>
       const ListEquality().hash([e?.uid, e?.title, e?.details]);
 
   @override
-  bool isValidKey(Object? o) => o is AwardsRecord;
+  bool isValidKey(Object? o) => o is AwardRecord;
 }

@@ -9,3 +9,4 @@ export '/community_service/community_service_widget.dart'
     show CommunityServiceWidget;
 export '/athletics/athletics_widget.dart' show AthleticsWidget;
 export '/awards/awards_widget.dart' show AwardsWidget;
+export '/showcase_awards/showcase_awards_widget.dart' show ShowcaseAwardsWidget;
