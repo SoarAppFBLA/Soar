@@ -491,6 +491,9 @@ class _PerformingArtsWidgetState extends State<PerformingArtsWidget> {
                         tileColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
                         dense: false,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24.0),
+                        ),
                       ),
                     ),
                   ),
@@ -599,6 +602,9 @@ class _PerformingArtsWidgetState extends State<PerformingArtsWidget> {
                         tileColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
                         dense: false,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24.0),
+                        ),
                       ),
                     ),
                   ),

@@ -460,6 +460,9 @@ class _ShowcaseAwardsWidgetState extends State<ShowcaseAwardsWidget> {
                         tileColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
                         dense: false,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24.0),
+                        ),
                       ),
                     ),
                   ),
@@ -568,6 +571,9 @@ class _ShowcaseAwardsWidgetState extends State<ShowcaseAwardsWidget> {
                         tileColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
                         dense: false,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24.0),
+                        ),
                       ),
                     ),
                   ),

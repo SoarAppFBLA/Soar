@@ -462,6 +462,9 @@ class _HomeAndAIWidgetState extends State<HomeAndAIWidget> {
                         tileColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
                         dense: false,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24.0),
+                        ),
                       ),
                     ),
                   ),
@@ -570,6 +573,9 @@ class _HomeAndAIWidgetState extends State<HomeAndAIWidget> {
                         tileColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
                         dense: false,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24.0),
+                        ),
                       ),
                     ),
                   ),
@@ -929,6 +935,23 @@ class _HomeAndAIWidgetState extends State<HomeAndAIWidget> {
                                           ),
                                       validator: _model.textControllerValidator
                                           .asValidator(context),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    child: Text(
+                                      'The following AI model is powered by Gemini. AI can make mistakes verify important imformation.',
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            fontSize: 12.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w200,
+                                          ),
                                     ),
                                   ),
                                   Padding(

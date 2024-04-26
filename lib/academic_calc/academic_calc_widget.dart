@@ -494,6 +494,9 @@ class _AcademicCalcWidgetState extends State<AcademicCalcWidget> {
                         tileColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
                         dense: false,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24.0),
+                        ),
                       ),
                     ),
                   ),
@@ -602,6 +605,9 @@ class _AcademicCalcWidgetState extends State<AcademicCalcWidget> {
                         tileColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
                         dense: false,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24.0),
+                        ),
                       ),
                     ),
                   ),
